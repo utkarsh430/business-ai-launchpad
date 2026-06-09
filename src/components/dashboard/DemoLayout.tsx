@@ -6,7 +6,7 @@ import {
   BarChart2, TrendingUp, Map, Package, DollarSign, Leaf, Shield,
   Search, CreditCard, Calendar, Target, FileText, Users, User,
   ChevronLeft, ChevronRight, Play, X, Menu, Database, RotateCcw,
-  Briefcase, Building
+  Briefcase, Building, Cpu, Layers, Calculator, Zap, MessageSquare
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -18,12 +18,17 @@ import { ExecutiveOverview } from './sections/ExecutiveOverview';
 import { AIReadiness } from './sections/AIReadiness';
 import { Competitiveness } from './sections/Competitiveness';
 import { OpportunityMap } from './sections/OpportunityMap';
+import { AISolutionStudio } from './sections/AISolutionStudio';
+import { ImplementationBlueprint } from './sections/ImplementationBlueprint';
 import { DemandInventory } from './sections/DemandInventory';
 import { CashFlow } from './sections/CashFlow';
 import { Sustainability } from './sections/Sustainability';
 import { ResponsibleAI } from './sections/ResponsibleAI';
 import { FundingNavigator } from './sections/FundingNavigator';
 import { FinancingPlanner } from './sections/FinancingPlanner';
+import { ROISimulator } from './sections/ROISimulator';
+import { UseCaseMarketplace } from './sections/UseCaseMarketplace';
+import { AICopilot } from './sections/AICopilot';
 import { Plan90Day } from './sections/Plan90Day';
 import { ImpactCentre } from './sections/ImpactCentre';
 import { ImplementationReport } from './sections/ImplementationReport';
@@ -35,12 +40,17 @@ const SME_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ s
   { id: 'readiness', label: 'AI Readiness', Icon: Shield },
   { id: 'competitiveness', label: 'Competitiveness', Icon: TrendingUp },
   { id: 'opportunity-map', label: 'Opportunity Map', Icon: Map },
+  { id: 'solution-studio', label: 'AI Solution Studio', Icon: Cpu },
+  { id: 'implementation-blueprint', label: 'Implementation Blueprint', Icon: Layers },
   { id: 'demand', label: 'Demand & Inventory', Icon: Package },
   { id: 'cashflow', label: 'Cash Flow', Icon: DollarSign },
   { id: 'sustainability', label: 'Sustainability', Icon: Leaf },
   { id: 'responsible-ai', label: 'Responsible AI', Icon: Shield },
   { id: 'funding', label: 'Funding Navigator', Icon: Search },
   { id: 'financing', label: 'Financing Planner', Icon: CreditCard },
+  { id: 'roi-simulator', label: 'ROI Simulator', Icon: Calculator },
+  { id: 'use-case-marketplace', label: 'Use Case Marketplace', Icon: Zap },
+  { id: 'ai-copilot', label: 'AI Copilot', Icon: MessageSquare },
   { id: 'plan', label: '90-Day Plan', Icon: Calendar },
   { id: 'impact', label: 'Impact Centre', Icon: Target },
   { id: 'report', label: 'Implementation Report', Icon: FileText },
@@ -54,8 +64,10 @@ const RM_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ si
 ];
 
 const PRESENTATION_SEQUENCE: ActiveSection[] = [
-  'overview', 'readiness', 'competitiveness', 'opportunity-map', 'demand',
-  'cashflow', 'sustainability', 'responsible-ai', 'funding', 'financing',
+  'overview', 'readiness', 'competitiveness', 'opportunity-map',
+  'solution-studio', 'implementation-blueprint',
+  'demand', 'cashflow', 'sustainability', 'responsible-ai',
+  'funding', 'financing', 'roi-simulator', 'use-case-marketplace', 'ai-copilot',
   'plan', 'impact', 'report', 'rm-portfolio', 'rm-brightcart',
 ];
 
@@ -117,12 +129,17 @@ export function DemoLayout() {
       case 'readiness': return <AIReadiness />;
       case 'competitiveness': return <Competitiveness />;
       case 'opportunity-map': return <OpportunityMap />;
+      case 'solution-studio': return <AISolutionStudio />;
+      case 'implementation-blueprint': return <ImplementationBlueprint />;
       case 'demand': return <DemandInventory />;
       case 'cashflow': return <CashFlow />;
       case 'sustainability': return <Sustainability />;
       case 'responsible-ai': return <ResponsibleAI />;
       case 'funding': return <FundingNavigator />;
       case 'financing': return <FinancingPlanner />;
+      case 'roi-simulator': return <ROISimulator />;
+      case 'use-case-marketplace': return <UseCaseMarketplace />;
+      case 'ai-copilot': return <AICopilot onNavigate={(s) => setActiveSection(s as ActiveSection)} />;
       case 'plan': return <Plan90Day />;
       case 'impact': return <ImpactCentre />;
       case 'report': return <ImplementationReport />;

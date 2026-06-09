@@ -279,6 +279,86 @@ export function ExecutiveOverview() {
         </span>
       </div>
 
+      {/* AI Adoption Status */}
+      <div className="grid sm:grid-cols-4 gap-4">
+        {[
+          {
+            label: 'AI Adoption Readiness',
+            value: 'Pilot Ready',
+            sub: 'With governance controls',
+            color: '#1d4ed8',
+            bg: '#eff6ff',
+          },
+          {
+            label: 'Selected AI Solution',
+            value: 'Demand & Inventory',
+            sub: 'Score: 88/100 · Low risk',
+            color: '#db0011',
+            bg: '#fef2f2',
+          },
+          {
+            label: 'Projected Business Value',
+            value: '£42,000',
+            sub: 'Annual net benefit · 8-mo payback',
+            color: '#00875a',
+            bg: '#f0fdf4',
+          },
+          {
+            label: 'Implementation Status',
+            value: 'Ready to Start',
+            sub: 'Data prep · Policy sign-off required',
+            color: '#d97706',
+            bg: '#fff7ed',
+          },
+        ].map((card) => (
+          <motion.div
+            key={card.label}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="rounded p-4"
+            style={{ background: card.bg }}
+          >
+            <p className="text-xs font-medium uppercase tracking-wide mb-1" style={{ color: '#888' }}>
+              {card.label}
+            </p>
+            <p className="text-base font-bold" style={{ color: card.color }}>{card.value}</p>
+            <p className="text-xs mt-0.5" style={{ color: '#555' }}>{card.sub}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Platform journey links */}
+      <div className="bg-white rounded border p-5" style={{ borderColor: '#e2e2e2' }}>
+        <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: '#888' }}>
+          Your AI Adoption Journey
+        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          {[
+            { label: 'Readiness', color: '#1d4ed8' },
+            { label: '→', color: '#ccc' },
+            { label: 'Opportunity', color: '#d97706' },
+            { label: '→', color: '#ccc' },
+            { label: 'Solution Studio', color: '#db0011' },
+            { label: '→', color: '#ccc' },
+            { label: 'Blueprint', color: '#6b21a8' },
+            { label: '→', color: '#ccc' },
+            { label: 'Funding', color: '#00875a' },
+            { label: '→', color: '#ccc' },
+            { label: 'ROI Simulator', color: '#00875a' },
+            { label: '→', color: '#ccc' },
+            { label: 'Impact', color: '#db0011' },
+          ].map((item, i) => (
+            <span
+              key={i}
+              className="text-xs font-medium"
+              style={{ color: item.color }}
+            >
+              {item.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* Data Trust summary */}
       <div
         className="rounded border p-4"

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckCircle, AlertTriangle, Info } from 'lucide-react';
+import { CheckCircle, AlertTriangle, Info, MapPin, Clock } from 'lucide-react';
 import { ReadinessRing } from '../../charts/ReadinessRing';
 import { RadarChart } from '../../charts/RadarChart';
 import { ProvenanceBadge } from '../../shared/ProvenanceBadge';
@@ -143,6 +143,96 @@ export function AIReadiness() {
             </motion.div>
           );
         })}
+      </div>
+
+      {/* AI Transformation Journey */}
+      <div className="bg-white rounded border p-6" style={{ borderColor: '#e2e2e2' }}>
+        <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center gap-2">
+            <MapPin size={16} style={{ color: '#db0011' }} />
+            <h3 className="font-semibold" style={{ color: '#111' }}>Your AI Transformation Journey</h3>
+          </div>
+          <ProvenanceBadge type="pilot-target" />
+        </div>
+        <p className="text-xs mb-5" style={{ color: '#888' }}>
+          Personalised roadmap based on readiness score 68/100, governance maturity, and selected opportunity: Demand &amp; Inventory Optimisation.
+        </p>
+        <div className="relative">
+          {/* Timeline line */}
+          <div
+            className="absolute left-4 top-0 bottom-0 w-0.5"
+            style={{ background: 'linear-gradient(to bottom, #db0011, #d97706, #1d4ed8, #00875a, #6b21a8)' }}
+          />
+          <div className="space-y-5 pl-12">
+            {[
+              {
+                period: 'Month 1',
+                color: '#db0011',
+                bg: '#fef2f2',
+                dot: '#db0011',
+                tasks: ['Improve supplier data quality (target: ≥90% SKU coverage)', 'Draft and sign AI acceptable-use policy', 'Assign AI project owner', 'Confirm baseline KPIs (stockout rate, inventory turnover)'],
+              },
+              {
+                period: 'Month 2',
+                color: '#d97706',
+                bg: '#fff7ed',
+                dot: '#d97706',
+                tasks: ['Launch demand forecasting pilot on 20 priority SKUs', 'Deliver AI awareness training to operations team', 'Define human-approval workflow for reorder decisions', 'Set up forecast accuracy tracking dashboard'],
+              },
+              {
+                period: 'Month 3',
+                color: '#1d4ed8',
+                bg: '#eff6ff',
+                dot: '#1d4ed8',
+                tasks: ['Launch AI-assisted reorder recommendation workflow', 'Begin logging all override decisions with reason codes', 'Complete first monthly model accuracy review', 'Submit Digital Productivity Support Programme application'],
+              },
+              {
+                period: 'Months 4–6',
+                color: '#00875a',
+                bg: '#f0fdf4',
+                dot: '#00875a',
+                tasks: ['Expand pilot from 20 SKUs to full catalogue', 'Integrate recommendations into inventory management system', 'Review pilot results vs baseline (target: stockout ≤5.1%)', 'Begin cash-flow forecasting scoping'],
+              },
+              {
+                period: 'Months 6–12',
+                color: '#6b21a8',
+                bg: '#faf5ff',
+                dot: '#6b21a8',
+                tasks: ['Scale successful use cases across all product categories', 'Launch cash-flow forecasting as second AI project', 'Conduct governance maturity review (target: ≥65/100)', 'Plan returns reduction AI project'],
+              },
+            ].map((milestone, i) => (
+              <motion.div
+                key={milestone.period}
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="relative"
+              >
+                {/* Dot */}
+                <div
+                  className="absolute -left-8 w-4 h-4 rounded-full border-2 border-white flex items-center justify-center"
+                  style={{ background: milestone.dot, boxShadow: `0 0 0 2px ${milestone.dot}40`, top: 4 }}
+                />
+                <div className="rounded p-4" style={{ background: milestone.bg }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Clock size={12} style={{ color: milestone.color }} />
+                    <span className="text-xs font-bold uppercase tracking-wide" style={{ color: milestone.color }}>
+                      {milestone.period}
+                    </span>
+                  </div>
+                  <ul className="space-y-1">
+                    {milestone.tasks.map((task) => (
+                      <li key={task} className="flex items-start gap-2">
+                        <span className="text-xs mt-0.5" style={{ color: milestone.color }}>›</span>
+                        <span className="text-xs" style={{ color: '#444' }}>{task}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Methodology */}
