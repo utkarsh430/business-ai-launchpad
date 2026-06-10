@@ -15,7 +15,7 @@ const PROVENANCE_TYPES = [
     color: '#3730a3',
     bg: '#eef2ff',
     desc: 'Created specifically for the fictional BrightCart demonstration. Not derived from any real company or HSBC customer data.',
-    examples: ['Company financials', 'Sales transaction history', 'Inventory values', 'Employee count'],
+    examples: ['Company financials', 'Sales transaction history', 'Inventory values', 'Employee count', 'Funding approval likelihood'],
   },
   {
     icon: Calculator,
@@ -23,7 +23,7 @@ const PROVENANCE_TYPES = [
     color: '#166534',
     bg: '#f0fdf4',
     desc: 'Calculated arithmetically from the canonical simulated values. Will update consistently when inputs change.',
-    examples: ['Revenue per employee', 'Gross margin', 'Reorder point', 'Payback period'],
+    examples: ['Revenue per employee', 'Gross margin', 'Reorder point', 'Payback period', 'Idle capital', 'Capital efficiency'],
   },
   {
     icon: BarChart2,
@@ -31,7 +31,7 @@ const PROVENANCE_TYPES = [
     color: '#9a3412',
     bg: '#fff7ed',
     desc: 'Created to demonstrate peer-comparison functionality. Not sourced from a real market dataset.',
-    examples: ['Peer median inventory turnover', 'Sector stockout rate', 'Digital maturity score'],
+    examples: ['Peer median inventory turnover', 'Sector stockout rate', 'Digital maturity score', 'Funding rates', 'Capital-efficiency benchmark', 'Growth Intelligence peer insight'],
   },
   {
     icon: Sliders,
@@ -39,7 +39,7 @@ const PROVENANCE_TYPES = [
     color: '#6b21a8',
     bg: '#fdf4ff',
     desc: 'Output of a scenario or financial model applied to the simulated inputs. Depends on assumptions stated in each module.',
-    examples: ['Cash flow projections', 'AI value estimates', 'Energy savings', 'Financing requirement'],
+    examples: ['Cash flow projections', 'AI value estimates', 'Energy savings', 'Financing requirement', 'Capital deployment ROI', 'Opportunity cost', 'Recommended allocation'],
   },
   {
     icon: Target,
@@ -156,6 +156,9 @@ export function DataTrustDrawer({ open, onClose }: DataTrustDrawerProps) {
                     'Cash-flow model assumes 30-day payment cycles',
                     'Benefit estimates use base-case scenario assumptions',
                     'Responsible AI risk classification follows illustrative framework',
+                    'Idle capital = current cash balance minus required operating reserve',
+                    'Capital opportunity cost uses an illustrative ~4.73% alternative-return rate',
+                    'No proprietary HSBC customer or transaction data is used in this prototype',
                   ].map((a) => (
                     <li key={a} className="text-xs flex items-start gap-2" style={{ color: '#666' }}>
                       <span style={{ color: '#bbb' }}>—</span>

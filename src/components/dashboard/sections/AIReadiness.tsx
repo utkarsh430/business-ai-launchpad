@@ -1070,11 +1070,6 @@ export function AIReadiness() {
               <><Cpu size={14} />Generate AI Readiness Assessment</>
             )}
           </button>
-          {!generated && !loading && (
-            <p className="text-xs mt-2" style={{ color: '#aaa' }}>
-              All values are prefilled for BrightCart. Score is illustrative and fixed at 68/100 for this prototype.
-            </p>
-          )}
         </div>
 
       </div>{/* /Company Readiness Inputs */}

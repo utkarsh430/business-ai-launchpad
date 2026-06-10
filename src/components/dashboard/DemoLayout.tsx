@@ -4,9 +4,9 @@ import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BarChart2, TrendingUp, Map, Package, DollarSign, Leaf, Shield,
-  Search, CreditCard, Calendar, Target, FileText, Users, User,
+  CreditCard, Calendar, Target, FileText, Users, User,
   ChevronLeft, ChevronRight, Play, X, Menu, Database, RotateCcw,
-  Briefcase, Building, Cpu, Layers, Calculator, Zap, MessageSquare
+  Briefcase, Building, Cpu, Layers, Calculator, Zap, MessageSquare, Landmark
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -24,8 +24,8 @@ import { DemandInventory } from './sections/DemandInventory';
 import { CashFlow } from './sections/CashFlow';
 import { Sustainability } from './sections/Sustainability';
 import { ResponsibleAI } from './sections/ResponsibleAI';
-import { FundingNavigator } from './sections/FundingNavigator';
 import { FinancingPlanner } from './sections/FinancingPlanner';
+import { CapitalIntelligence } from './sections/CapitalIntelligence';
 import { ROISimulator } from './sections/ROISimulator';
 import { UseCaseMarketplace } from './sections/UseCaseMarketplace';
 import { AICopilot } from './sections/AICopilot';
@@ -48,8 +48,8 @@ const SME_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ s
   { id: 'cashflow', label: 'Cash Flow', Icon: DollarSign },
   { id: 'sustainability', label: 'Sustainability', Icon: Leaf },
   { id: 'responsible-ai', label: 'Responsible AI', Icon: Shield },
-  { id: 'funding', label: 'Funding Navigator', Icon: Search },
   { id: 'financing', label: 'Financing Planner', Icon: CreditCard },
+  { id: 'capital-intelligence', label: 'HSBC Capital Intelligence™', Icon: Landmark },
   { id: 'roi-simulator', label: 'ROI Simulator', Icon: Calculator },
   { id: 'use-case-marketplace', label: 'Use Case Marketplace', Icon: Zap },
   { id: 'ai-copilot', label: 'AI Copilot', Icon: MessageSquare },
@@ -69,7 +69,7 @@ const PRESENTATION_SEQUENCE: ActiveSection[] = [
   'overview', 'readiness', 'competitiveness', 'opportunity-map',
   'solution-studio', 'implementation-blueprint', 'workforce-impact',
   'demand', 'cashflow', 'sustainability', 'responsible-ai',
-  'funding', 'financing', 'roi-simulator', 'use-case-marketplace', 'ai-copilot',
+  'financing', 'capital-intelligence', 'roi-simulator', 'use-case-marketplace', 'ai-copilot',
   'plan', 'impact', 'report', 'rm-portfolio', 'rm-brightcart',
 ];
 
@@ -138,8 +138,8 @@ export function DemoLayout() {
       case 'cashflow': return <CashFlow />;
       case 'sustainability': return <Sustainability />;
       case 'responsible-ai': return <ResponsibleAI />;
-      case 'funding': return <FundingNavigator />;
       case 'financing': return <FinancingPlanner />;
+      case 'capital-intelligence': return <CapitalIntelligence onNavigate={(s) => setActiveSection(s as ActiveSection)} />;
       case 'roi-simulator': return <ROISimulator />;
       case 'use-case-marketplace': return <UseCaseMarketplace />;
       case 'ai-copilot': return <AICopilot onNavigate={(s) => setActiveSection(s as ActiveSection)} />;
