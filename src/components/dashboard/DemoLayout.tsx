@@ -34,6 +34,7 @@ import { ImpactCentre } from './sections/ImpactCentre';
 import { ImplementationReport } from './sections/ImplementationReport';
 import { RMPortfolio } from './sections/RMPortfolio';
 import { RMBrightCart } from './sections/RMBrightCart';
+import { WorkforceImpact } from './sections/WorkforceImpact';
 
 const SME_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ size?: number }> }[] = [
   { id: 'overview', label: 'Executive Overview', Icon: BarChart2 },
@@ -42,6 +43,7 @@ const SME_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ s
   { id: 'opportunity-map', label: 'Opportunity Map', Icon: Map },
   { id: 'solution-studio', label: 'AI Solution Studio', Icon: Cpu },
   { id: 'implementation-blueprint', label: 'Implementation Blueprint', Icon: Layers },
+  { id: 'workforce-impact', label: 'Workforce Impact', Icon: Users },
   { id: 'demand', label: 'Demand & Inventory', Icon: Package },
   { id: 'cashflow', label: 'Cash Flow', Icon: DollarSign },
   { id: 'sustainability', label: 'Sustainability', Icon: Leaf },
@@ -65,7 +67,7 @@ const RM_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ si
 
 const PRESENTATION_SEQUENCE: ActiveSection[] = [
   'overview', 'readiness', 'competitiveness', 'opportunity-map',
-  'solution-studio', 'implementation-blueprint',
+  'solution-studio', 'implementation-blueprint', 'workforce-impact',
   'demand', 'cashflow', 'sustainability', 'responsible-ai',
   'funding', 'financing', 'roi-simulator', 'use-case-marketplace', 'ai-copilot',
   'plan', 'impact', 'report', 'rm-portfolio', 'rm-brightcart',
@@ -131,6 +133,7 @@ export function DemoLayout() {
       case 'opportunity-map': return <OpportunityMap />;
       case 'solution-studio': return <AISolutionStudio />;
       case 'implementation-blueprint': return <ImplementationBlueprint />;
+      case 'workforce-impact': return <WorkforceImpact onNavigate={(s) => setActiveSection(s as ActiveSection)} />;
       case 'demand': return <DemandInventory />;
       case 'cashflow': return <CashFlow />;
       case 'sustainability': return <Sustainability />;

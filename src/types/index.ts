@@ -83,6 +83,7 @@ export type ActiveSection =
   | 'opportunity-map'
   | 'solution-studio'
   | 'implementation-blueprint'
+  | 'workforce-impact'
   | 'demand'
   | 'cashflow'
   | 'sustainability'
