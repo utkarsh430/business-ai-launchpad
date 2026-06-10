@@ -99,19 +99,14 @@ function Header() {
         subtitle="Understand how to source, protect and deploy capital for sustainable business growth."
       />
       <div className="flex flex-wrap gap-2 -mt-3">
-        <Badge color="#111" bg="#f4f4f4">Capital Advisory</Badge>
-        <Badge color="#9a3412" bg="#fff7ed" border="#fed7aa">BrightCart Demo</Badge>
-        <Badge color="#6b21a8" bg="#fdf4ff" border="#e9d5ff">Illustrative Scenario</Badge>
+        
       </div>
       <div
         className="rounded border p-3 text-xs mt-4 flex items-start gap-2"
         style={{ background: '#fff7ed', borderColor: '#fed7aa', color: '#7c2d12' }}
       >
         <Info size={14} className="mt-0.5 shrink-0" />
-        <span>
-          Illustrative prototype analysis. It does not constitute financial advice, lending approval or a
-          commitment by HSBC.
-        </span>
+      
       </div>
     </div>
   );
@@ -485,72 +480,21 @@ function IdleCapitalSection({ onNavigate, reduceMotion }: {
         </div>
       </Card>
 
-      {/* 67-day timeline */}
-      <Card className="mb-4">
-        <div className="flex items-center justify-between mb-2">
-          <p className="text-sm font-semibold" style={{ color: '#111' }}>Days above required reserve</p>
-          <span className="text-lg font-bold" style={{ color: RED }}>{CAPITAL.daysAboveReserve} days</span>
-        </div>
-        <div className="h-3 rounded-full overflow-hidden" style={{ background: '#f0f0f0' }}>
-          <motion.div className="h-full rounded-full" style={{ background: RED }}
-            initial={reduceMotion ? false : { width: 0 }} animate={{ width: '74%' }} transition={{ duration: 0.8 }} />
-        </div>
-        <div className="flex justify-between text-xs mt-1" style={{ color: '#bbb' }}>
-          <span>Day 0</span><span>Day 30</span><span>Day 67 (today)</span><span>Day 90</span>
-        </div>
-      </Card>
+      
 
-      {/* Reserve stress test */}
-      <Card className="mb-4">
-        <div className="flex items-center justify-between mb-3">
-          <p className="text-sm font-semibold" style={{ color: '#111' }}>Interactive reserve stress test</p>
-          <Badge color={stateCfg.color} bg={stateCfg.bg} border={stateCfg.color + '55'}>{stateCfg.label}</Badge>
-        </div>
-        <label className="text-xs font-semibold uppercase tracking-wide block mb-1" style={{ color: '#888' }}>
-          Required operating reserve — {formatCurrency(reserve)}
-        </label>
-        <input
-          type="range" min={50_000} max={120_000} step={2_000} value={reserve}
-          onChange={(e) => setReserve(Number(e.target.value))}
-          aria-label="Required operating reserve"
-          className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
-          style={{ accentColor: RED, background: '#f0f0f0' }}
-        />
-        <div className="flex justify-between text-xs mt-1 mb-4" style={{ color: '#bbb' }}>
-          <span>{formatCurrency(50_000)}</span><span>{formatCurrency(120_000)}</span>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[
-            { l: 'Idle capital', v: formatCurrency(idle), c: RED },
-            { l: 'Liquidity coverage', v: `${coverage.toFixed(1)} mo`, c: '#111' },
-            { l: 'Opportunity cost', v: formatCurrency(Math.round(oppCost)), c: '#9a3412' },
-            { l: 'Deployment capacity', v: formatCurrency(Math.max(0, idle)), c: '#0f766e' },
-          ].map((m) => (
-            <div key={m.l} className="rounded border p-3" style={{ borderColor: '#eee' }}>
-              <p className="text-xs" style={{ color: '#888' }}>{m.l}</p>
-              <p className="text-base font-bold" style={{ color: m.c }}>{m.v}</p>
-            </div>
-          ))}
-        </div>
-        <div className="rounded p-3 mt-3 text-xs" style={{ background: stateCfg.bg, color: stateCfg.color }}>
-          {stateCfg.desc} The prudent band is an illustrative 30%–55% of the current cash balance.
-        </div>
-      </Card>
+    
 
       {/* Insight */}
       <div className="rounded border-l-4 p-4 mb-3" style={{ borderLeftColor: RED, background: '#fafafa' }}>
         <p className="text-sm leading-relaxed" style={{ color: '#444' }}>
+          IDLE AMOUNT = {formatCurrency(CAPITAL_DERIVED.idleCapital)}
+        </p>
+        <p className="text-sm leading-relaxed" style={{ color: '#444' }}>
           BrightCart can potentially redeploy up to {formatCurrency(CAPITAL_DERIVED.idleCapital)} without falling below
-          its estimated operating reserve. Management should not deploy the full amount immediately; capital should be
-          released in stages and reviewed against seasonal working-capital requirements.
+          its estimated operating reserve. 
         </p>
       </div>
-      <p className="text-xs mb-4" style={{ color: '#888' }}>
-        Idle capital is not automatically wasteful. A reserve protects payroll, suppliers, tax obligations and
-        unexpected disruption. The purpose of this analysis is to distinguish prudent liquidity from structurally
-        underused capital.
-      </p>
+      
       {onNavigate && <CrossLink label="Review Cash-Flow Scenario" onClick={() => onNavigate('cashflow')} />}
     </section>
   );
