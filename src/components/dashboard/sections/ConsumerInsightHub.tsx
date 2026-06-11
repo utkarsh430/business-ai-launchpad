@@ -175,20 +175,7 @@ export function ConsumerInsightHub() {
       </Card>
 
       {/* 4. Word cloud */}
-      <Card>
-        <p className="text-sm font-semibold mb-4" style={{ color: '#111' }}>Voice of the customer</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 py-2">
-          {CONSUMER.wordCloud.map((w) => {
-            const fontSize = 12 + w.weight * 4;
-            const color = w.weight >= 5 ? RED : w.weight >= 3 ? '#1d4ed8' : '#888';
-            return (
-              <span key={w.word} className="font-bold leading-none" style={{ fontSize, color }}>
-                {w.word}
-              </span>
-            );
-          })}
-        </div>
-      </Card>
+      
 
       {/* 5. Action priority panel */}
       <Card>
