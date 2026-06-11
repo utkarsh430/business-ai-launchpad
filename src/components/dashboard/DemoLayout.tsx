@@ -6,7 +6,8 @@ import {
   BarChart2, TrendingUp, Map, Package, DollarSign, Leaf, Shield,
   CreditCard, Calendar, Target, FileText, Users, User,
   ChevronLeft, ChevronRight, Play, X, Menu, Database, RotateCcw,
-  Briefcase, Building, Cpu, Layers, Calculator, Zap, MessageSquare, Landmark
+  Briefcase, Building, Cpu, Layers, Calculator, Zap, MessageSquare, Landmark,
+  Activity, Mail, Smile, Scale
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -35,11 +36,18 @@ import { ImplementationReport } from './sections/ImplementationReport';
 import { RMPortfolio } from './sections/RMPortfolio';
 import { RMBrightCart } from './sections/RMBrightCart';
 import { WorkforceImpact } from './sections/WorkforceImpact';
+import { BusinessVitalMonitor } from './sections/BusinessVitalMonitor';
+import { EmailMeetingIntelligence } from './sections/EmailMeetingIntelligence';
+import { ConsumerInsightHub } from './sections/ConsumerInsightHub';
+import { PolicyMonitor } from './sections/PolicyMonitor';
 
 const SME_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ size?: number }> }[] = [
   { id: 'overview', label: 'Executive Overview', Icon: BarChart2 },
+  { id: 'vital-monitor', label: 'Business Vital Monitor™', Icon: Activity },
   { id: 'readiness', label: 'AI Readiness', Icon: Shield },
+  { id: 'email-meeting', label: 'Email & Meeting Intelligence™', Icon: Mail },
   { id: 'competitiveness', label: 'Competitiveness', Icon: TrendingUp },
+  { id: 'consumer-insight', label: 'Consumer Insight Hub™', Icon: Smile },
   { id: 'opportunity-map', label: 'Opportunity Map', Icon: Map },
   { id: 'solution-studio', label: 'AI Solution Studio', Icon: Cpu },
   { id: 'implementation-blueprint', label: 'Implementation Blueprint', Icon: Layers },
@@ -48,6 +56,7 @@ const SME_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ s
   { id: 'cashflow', label: 'Cash Flow', Icon: DollarSign },
   { id: 'sustainability', label: 'Sustainability', Icon: Leaf },
   { id: 'responsible-ai', label: 'Responsible AI', Icon: Shield },
+  { id: 'policy-monitor', label: 'Policy Monitor™', Icon: Scale },
   { id: 'financing', label: 'Financing Planner', Icon: CreditCard },
   { id: 'capital-intelligence', label: 'HSBC Capital Intelligence™', Icon: Landmark },
   { id: 'roi-simulator', label: 'ROI Simulator', Icon: Calculator },
@@ -66,7 +75,8 @@ const RM_NAV: { id: ActiveSection; label: string; Icon: React.ComponentType<{ si
 ];
 
 const PRESENTATION_SEQUENCE: ActiveSection[] = [
-  'overview', 'readiness', 'competitiveness', 'opportunity-map',
+  'overview', 'readiness', 'vital-monitor', 'email-meeting', 'consumer-insight', 'policy-monitor',
+  'competitiveness', 'opportunity-map',
   'solution-studio', 'implementation-blueprint', 'workforce-impact',
   'demand', 'cashflow', 'sustainability', 'responsible-ai',
   'financing', 'capital-intelligence', 'roi-simulator', 'use-case-marketplace', 'ai-copilot',
@@ -127,8 +137,12 @@ export function DemoLayout() {
 
   function renderSection() {
     switch (activeSection) {
-      case 'overview': return <ExecutiveOverview />;
+      case 'overview': return <ExecutiveOverview onNavigate={(s) => setActiveSection(s as ActiveSection)} />;
       case 'readiness': return <AIReadiness />;
+      case 'vital-monitor': return <BusinessVitalMonitor />;
+      case 'email-meeting': return <EmailMeetingIntelligence />;
+      case 'consumer-insight': return <ConsumerInsightHub />;
+      case 'policy-monitor': return <PolicyMonitor />;
       case 'competitiveness': return <Competitiveness />;
       case 'opportunity-map': return <OpportunityMap />;
       case 'solution-studio': return <AISolutionStudio />;

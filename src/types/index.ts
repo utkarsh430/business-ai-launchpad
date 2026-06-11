@@ -79,6 +79,10 @@ export interface PlanTask {
 export type ActiveSection =
   | 'overview'
   | 'readiness'
+  | 'vital-monitor'
+  | 'email-meeting'
+  | 'consumer-insight'
+  | 'policy-monitor'
   | 'competitiveness'
   | 'opportunity-map'
   | 'solution-studio'

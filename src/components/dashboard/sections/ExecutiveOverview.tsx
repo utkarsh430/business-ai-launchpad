@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CheckCircle, AlertTriangle, ArrowRight } from 'lucide-react';
+import { CheckCircle, AlertTriangle, ArrowRight, Mail, Activity, Smile, Scale } from 'lucide-react';
 import { ReadinessRing } from '../../charts/ReadinessRing';
 import { JourneyRail } from '../../motion/JourneyRail';
 import { ProvenanceBadge } from '../../shared/ProvenanceBadge';
@@ -9,7 +9,14 @@ import { BRIGHTCART } from '@/src/data/brightcart';
 
 const { readiness, competitiveness, opportunities } = BRIGHTCART;
 
-export function ExecutiveOverview() {
+const PREVIEW_CARDS = [
+  { section: 'email-meeting', label: 'Communication Intelligence', value: '18 hrs saved', sub: 'This month', Icon: Mail, color: '#db0011' },
+  { section: 'vital-monitor', label: 'Business Vitals', value: '2 critical alerts', sub: 'Liquidity under pressure', Icon: Activity, color: '#db0011' },
+  { section: 'consumer-insight', label: 'Consumer Insights', value: 'Sentiment 82%', sub: 'Above industry average', Icon: Smile, color: '#00875a' },
+  { section: 'policy-monitor', label: 'Policy Monitor', value: '3 upcoming actions', sub: 'Prepare within 12 months', Icon: Scale, color: '#d97706' },
+];
+
+export function ExecutiveOverview({ onNavigate }: { onNavigate?: (section: string) => void }) {
   const topOpp = opportunities[0]!;
 
   return (
@@ -63,6 +70,29 @@ export function ExecutiveOverview() {
               {m.sub}
             </p>
           </motion.div>
+        ))}
+      </div>
+
+      {/* Strategy module previews */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {PREVIEW_CARDS.map((c) => (
+          <motion.button
+            key={c.section}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            onClick={() => onNavigate?.(c.section)}
+            disabled={!onNavigate}
+            className="text-left bg-white rounded border p-4 transition-all hover:shadow-sm disabled:cursor-default"
+            style={{ borderColor: '#e2e2e2' }}
+          >
+            <div className="flex items-center justify-between mb-1">
+              <c.Icon size={16} style={{ color: c.color }} />
+              {onNavigate && <ArrowRight size={13} style={{ color: '#bbb' }} />}
+            </div>
+            <p className="text-xs uppercase tracking-wide font-medium" style={{ color: '#888' }}>{c.label}</p>
+            <p className="text-base font-bold mt-0.5" style={{ color: '#111' }}>{c.value}</p>
+            <p className="text-xs mt-0.5" style={{ color: '#888' }}>{c.sub}</p>
+          </motion.button>
         ))}
       </div>
 
